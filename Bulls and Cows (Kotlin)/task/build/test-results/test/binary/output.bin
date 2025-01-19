@@ -1,11 +1,15 @@
 [1;31m
 Start test 1[0m
-#The secret code is prepared: ****.
-Turn 1. Answer:
-1234
-Grade: None.
-
-Turn 2. Answer:
-9876
-Grade: 4 bulls.
-#Congrats! The secret code is 9876.
+> 3601
+8Grade: 1 bull(s) and 1 cow(s). The secret code is 9305.
+0[0;34mWhy 9305? Make your own secret number :)
+[1;31m
+Start test 2[0m
+> 9305
+8Grade: 4 bull(s) and 0 cow(s). The secret code is 9305.
+0[0;34mWhy 9305? Make your own secret number :)
+[1;31m
+Start test 3[0m
+> 1246
+8Grade: 0 bull(s) and 0 cow(s). The secret code is 9305.
+0[0;34mWhy 9305? Make your own secret number :)
