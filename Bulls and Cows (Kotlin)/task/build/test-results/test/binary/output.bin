@@ -1,15 +1,20 @@
 [1;31m
 Start test 1[0m
-> 3601
-8Grade: 1 bull(s) and 1 cow(s). The secret code is 9305.
-0[0;34mWhy 9305? Make your own secret number :)
+> 4
+5739
 [1;31m
 Start test 2[0m
-> 9305
-8Grade: 4 bull(s) and 0 cow(s). The secret code is 9305.
-0[0;34mWhy 9305? Make your own secret number :)
+> 1
+6
 [1;31m
 Start test 3[0m
-> 1246
-8Grade: 0 bull(s) and 0 cow(s). The secret code is 9305.
-0[0;34mWhy 9305? Make your own secret number :)
+> 11
+eError: can't generate a secret number with a length of 11 because there aren't enough unique digits.
+[1;31m
+Start test 4[0m
+> 6
+854603
+[1;31m
+Start test 5[0m
+> 3
+381
