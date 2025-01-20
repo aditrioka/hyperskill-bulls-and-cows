@@ -23,7 +23,7 @@ class BullsAndCows {
     private val characterFlags = mutableSetOf<Char>()
 
     fun play() {
-        promptInput()
+        if (!promptInput()) return
         generateCode()
 
         println(START_GAME_MESSAGE)
@@ -37,20 +37,34 @@ class BullsAndCows {
         println(WIN_MESSAGE)
     }
 
-    private fun promptInput() {
+    private fun promptInput(): Boolean {
         do {
-            println(INPUT_LENGTH_PROMPT)
-            lengthOfSecretCode = readln().toInt()
+            try {
+                println(INPUT_LENGTH_PROMPT)
+                lengthOfSecretCode = readln().toInt()
 
-            println(INPUT_NUM_SYMBOLS)
-            numOfPossibleSymbols = readln().toInt()
+                println(INPUT_NUM_SYMBOLS)
+                numOfPossibleSymbols = readln().toInt()
 
-            isInputValid = lengthOfSecretCode in 1..MAX_LENGTH &&
-                    numOfPossibleSymbols in 2..MAX_LENGTH &&
-                    lengthOfSecretCode <= numOfPossibleSymbols
+                isInputValid = lengthOfSecretCode in 1..MAX_LENGTH &&
+                        numOfPossibleSymbols in 2..MAX_LENGTH &&
+                        lengthOfSecretCode <= numOfPossibleSymbols
 
-            if (!isInputValid) println(ERROR_MESSAGE)
+                if (lengthOfSecretCode > numOfPossibleSymbols || lengthOfSecretCode == 0) {
+                    println(NOT_SUFFICIENT_LENGTH_ERROR.format(lengthOfSecretCode, numOfPossibleSymbols))
+                    return false
+                }
+
+                if (numOfPossibleSymbols > MAX_LENGTH) {
+                    println(MAXIMUM_NUMBER_OF_SYMBOL_ERROR)
+                    return false
+                }
+            } catch(e: NumberFormatException) {
+                println("Error: \"$e\" isn't a valid number.")
+                return false
+            }
         } while(!isInputValid)
+        return true
     }
 
     private fun grade(guess: String) {
@@ -117,7 +131,9 @@ class BullsAndCows {
     }
 
     companion object {
-        const val ERROR_MESSAGE = "Error: can't generate a secret number with a length of 11 because there aren't enough unique digits."
+        const val NOT_SUFFICIENT_LENGTH_ERROR = "Error: it's not possible to generate a code with a length of %d with %d unique symbols."
+        const val MAXIMUM_NUMBER_OF_SYMBOL_ERROR = "Error: maximum number of possible symbols in the code is 36 (0-9, a-z).X"
+
         const val MAX_LENGTH = 36
         const val DIGIT_LENGTH = 10
 
